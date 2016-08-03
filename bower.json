@@ -1,0 +1,25 @@
+{
+  "name": "angular_require_test",
+  "authors": [
+    "liuxin <liuxin@newborn-town.com>"
+  ],
+  "description": "this is a test",
+  "main": "index.html",
+  "keywords": [
+    "angular",
+    "requirejs"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "requirejs": "^2.2.0",
+    "angular-ui-router": "^0.3.1"
+  }
+}
