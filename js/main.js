@@ -5,13 +5,17 @@ require.config({
     baseUrl:"./js",
     paths:{
         "angular":"../bower_components/angular/angular.min",
-        "uiRouter":"../bower_components/angular-ui-router/release/angular-ui-router.min"
+        "uiRouter":"../bower_components/angular-ui-router/release/angular-ui-router.min",
+        "ocLazyLoad":"../bower_components/oclazyload/dist/ocLazyLoad.min"
     },
     shim:{
         "angular":{
             exports:"angular"
         },
         "uiRouter":{
+            deps:["angular"]
+        },
+        "ocLazyLoad":{
             deps:["angular"]
         }
     }
