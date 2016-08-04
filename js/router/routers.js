@@ -1,14 +1,27 @@
 /**
  * Created by sa on 16-8-3.
  */
-define(["angular","../module/module","../controller/login"],function (angular,app) {
+define(["angular","../module/module"],function (angular,app) {
+
     app.config(['$stateProvider', '$urlRouterProvider',
         function($stateProvider, $urlRouterProvider) {
             $stateProvider
                 .state('login', {
                     url: '/login',
-                    templateUrl: 'html/login.html',
-                    controller: 'loginController'
+                    view:{
+                        templateUrl: 'html/login.html',
+                        controller: 'loginController',
+                    },
+                    resolve: {
+                        loginController: function($ocLazyLoad){
+                            return $ocLazyLoad.load(
+                                {
+                                    name: "app",  //module name is "store"
+                                    files: ["js/controller/login.js"]
+                                }
+                            )
+                        }
+                    }
                 })
                 .state('index', {
                     url: '/index',
