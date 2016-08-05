@@ -1,1 +1,14 @@
-
+*{
+    border: 0;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.out,body,html{
+    width: 100%;
+    height: 100%;
+    color: #fff;
+    background: #000;
+    overflow: hidden;
+    clear: both;
+}

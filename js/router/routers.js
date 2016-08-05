@@ -1,26 +1,19 @@
 /**
  * Created by sa on 16-8-3.
  */
-define(["angular","../module/module"],function (angular,app) {
-
-    app.config(['$stateProvider', '$urlRouterProvider',
-        function($stateProvider, $urlRouterProvider) {
+define(["../module/module"],function (app) {
+    app.config(['$stateProvider', '$urlRouterProvider','$requireProvider',
+        function($stateProvider, $urlRouterProvider,$requireProvider) {
+            var requireJS = $requireProvider.requireJS;
             $stateProvider
                 .state('login', {
                     url: '/login',
-                    view:{
-                        templateUrl: 'html/login.html',
-                        controller: 'loginController',
-                    },
+                    templateUrl: 'html/login.html',
+                    controller: 'loginController',
                     resolve: {
-                        loginController: function($ocLazyLoad){
-                            return $ocLazyLoad.load(
-                                {
-                                    name: "app",  //module name is "store"
-                                    files: ["js/controller/login.js"]
-                                }
-                            )
-                        }
+                        deps: requireJS([
+                            'js/controller/loginController.js'
+                        ])
                     }
                 })
                 .state('index', {
@@ -29,13 +22,23 @@ define(["angular","../module/module"],function (angular,app) {
                 })
                 .state('index.list', {
                     url: 'list',
-                    templateUrl: 'html/list.html'
+                    templateUrl: 'html/list.html',
+                    resolve: {
+                        deps: requireJS([
+                            'js/controller/listController.js'
+                        ])
+                    }
                 })
                 .state('index.detail', {
                     url: 'detail/:id',
-                    templateUrl: 'html/detail.html'
+                    templateUrl: 'html/detail.html',
+                    resolve: {
+                        deps: requireJS([
+                            'js/controller/detailController.js'
+                        ])
+                    }
                 })
-            $urlRouterProvider.otherwise('/');
+            $urlRouterProvider.otherwise('/login');
         }
     ]);
 });
