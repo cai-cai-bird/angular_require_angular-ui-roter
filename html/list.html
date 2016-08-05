@@ -1,1 +1,11 @@
-list
+<style>
+    ul li{
+        line-height: 40px;
+        border-bottom: 1px solid #f0d0f0;
+    }
+</style>
+<div id="list" ng-controller="listController">
+    <ul>
+        <li ng-repeat="data in data"><a ui-sref="index.detail({id:data.id})">{{data.title}}</a></li>
+    </ul>
+</div>
