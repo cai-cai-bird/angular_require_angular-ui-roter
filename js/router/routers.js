@@ -6,10 +6,18 @@ define(["../module/module"],function (app) {
         function($stateProvider, $urlRouterProvider,$requireProvider) {
             var requireJS = $requireProvider.requireJS;
             $stateProvider
+                .state('register', {
+                    url: '/register',
+                    templateUrl: 'html/register.html',
+                    resolve: {
+                        deps: requireJS([
+                            'js/controller/registerController.js'
+                        ])
+                    }
+                })
                 .state('login', {
                     url: '/login',
                     templateUrl: 'html/login.html',
-                    controller: 'loginController',
                     resolve: {
                         deps: requireJS([
                             'js/controller/loginController.js'
@@ -18,10 +26,11 @@ define(["../module/module"],function (app) {
                 })
                 .state('index', {
                     url: '/index',
-                    templateUrl: 'html/index.html'
+                    templateUrl: 'html/index.html',
+                    abstract:true
                 })
                 .state('index.list', {
-                    url: 'list',
+                    url: '/list',
                     templateUrl: 'html/list.html',
                     resolve: {
                         deps: requireJS([
@@ -30,7 +39,7 @@ define(["../module/module"],function (app) {
                     }
                 })
                 .state('index.detail', {
-                    url: 'detail/:id',
+                    url: '/detail/:id',
                     templateUrl: 'html/detail.html',
                     resolve: {
                         deps: requireJS([
@@ -38,7 +47,7 @@ define(["../module/module"],function (app) {
                         ])
                     }
                 })
-            $urlRouterProvider.otherwise('/login');
+            $urlRouterProvider.otherwise('/register');
         }
     ]);
 });

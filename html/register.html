@@ -1,0 +1,48 @@
+<div id="register"  class="container-fluid" style="margin-top: 30px" ng-controller="registerController">
+    <form class="form-horizontal" name="form" ng-submit="submit()" method="get" novalidate="novalidate">
+        <div class="form-group">
+            <label for="Email" class="col-sm-2 control-label">Email</label>
+            <div class="col-sm-9"  ng-class="{'has-error':form.email.$dirty && form.email.$invalid}">
+                <input type="email" autocomplete="off" form-error ng-required="true" name="email" class="form-control" id="Email" placeholder="Email" ng-model="data.form.email">
+                <!--<br>
+                <ul ng-if="form.email.$dirty&&form.email.$invalid">
+                    <li ng-if="form.email.$error.email">无效的邮箱格式</li>
+                    <li ng-if="form.email.$error.required">22</li>
+                </ul>-->
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="Name" class="col-sm-2 control-label">userName</label>
+            <div class="col-sm-9">
+                <input type="text" form-error ng-required="true" class="form-control" name="name" id="Name" placeholder="userName" ng-model="data.form.name">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="Password" class="col-sm-2 control-label">Password</label>
+            <div class="col-sm-9">
+                <input type="password" class="form-control" name="password" id="Password" placeholder="Password" ng-model="data.form.password">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="retypedPassword" class="col-sm-2 control-label">retypedPassword</label>
+            <div class="col-sm-9">
+                <input type="password" class="form-control" name="retypedPassword" id="retypedPassword" placeholder="retypedPassword" ng-model="data.retypedPassword">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-9">
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" ng-model="data.accepted"> Remember me <a href="javascript:;">《用户协议》</a>
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-9">
+                <button ng-disabled="form.$invalid" type="submit" class="btn btn-default">Sign up</button>
+            </div>
+        </div>
+    </form>
+</div>
